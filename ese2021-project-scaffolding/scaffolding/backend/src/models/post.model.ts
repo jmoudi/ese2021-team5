@@ -12,6 +12,7 @@ export interface PostAttributes {
   pictureFile: string;
   upvotes: number;
   downvotes: number;
+  score: number;
 }
 
 export interface PostCreationAttributes extends Optional<PostAttributes, 'postId'> { }
@@ -47,6 +48,7 @@ export class Post extends Model<PostAttributes, PostCreationAttributes> implemen
       pictureFile: DataTypes.BOOLEAN,
       upvotes: DataTypes.INTEGER,
       downvotes: DataTypes.INTEGER,
+      score: DataTypes.INTEGER,
     },
       {
         sequelize,

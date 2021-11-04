@@ -15,6 +15,7 @@ export class Post {
    public postId: number,
    public upvotes: number,
    public downvotes: number,
+   public score: number,
   ) {
 
     /*
