@@ -10,6 +10,8 @@ export interface PostAttributes {
   creatorUsername: string;
   pictureLink: string;
   pictureFile: string;
+  upvotes: number;
+  downvotes: number;
 }
 
 export interface PostCreationAttributes extends Optional<PostAttributes, 'postId'> { }
@@ -23,6 +25,8 @@ export class Post extends Model<PostAttributes, PostCreationAttributes> implemen
   creatorUsername: string;
   pictureLink: string;
   pictureFile: string;
+  upvotes: number;
+  downvotes: number;
 
   public static initialize(sequelize: Sequelize) {
     Post.init({
@@ -41,6 +45,8 @@ export class Post extends Model<PostAttributes, PostCreationAttributes> implemen
       creatorUsername: DataTypes.STRING,
       pictureLink: DataTypes.STRING,
       pictureFile: DataTypes.BOOLEAN,
+      upvotes: DataTypes.INTEGER,
+      downvotes: DataTypes.INTEGER,
     },
       {
         sequelize,

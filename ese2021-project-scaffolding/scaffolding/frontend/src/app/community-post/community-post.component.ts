@@ -24,6 +24,8 @@ export class CommunityPostComponent implements OnInit {
   newPictureLink: string = '';
   newPostFlag: any = false;
   newPostButtonTxt: string = "Create a new Post!";
+  upvotes: number = 0;
+  downvotes: number = 0;
   private user: User | undefined;
   fileSelected: boolean = false;
   image: any;
@@ -66,9 +68,11 @@ export class CommunityPostComponent implements OnInit {
       creatorUsername: this.userService.getUser()?.username || '',
       pictureLink: this.newPictureLink,
       pictureFile: this.image,
+      upvotes: this.upvotes,
+      downvotes: this.downvotes,
 
     }).subscribe((post: any) => {
-      this.allPosts.push(new Post(post.title, post.category, post.text, post.creatorId, post.creatorUsername, post.pictureLink, post.pictureFile, post.postId));
+      this.allPosts.push(new Post(post.title, post.category, post.text, post.creatorId, post.creatorUsername, post.pictureLink, post.pictureFile, post.postId, post.upvotes, post.downvotes));
       this.resetImage();
       this.newPostTitle= this.newPictureLink = this.newPostText = this.newPostCategory = '';
       this.newPost(); //resets the "new post window"
@@ -78,7 +82,7 @@ export class CommunityPostComponent implements OnInit {
   readPosts(): void {
     this.httpClient.get(environment.endpointURL + "post").subscribe((posts: any) => {
       posts.forEach((post: any) => {
-        this.allPosts.push(new Post(post.title, post.category, post.text, post.creatorId, post.creatorUsername, post.pictureLink, post.pictureFile, post.postId));
+        this.allPosts.push(new Post(post.title, post.category, post.text, post.creatorId, post.creatorUsername, post.pictureLink, post.pictureFile, post.postId, post.upvotes, post.downvotes));
       })
     })
   }

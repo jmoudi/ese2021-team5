@@ -14,8 +14,8 @@
       <img mat-card-image class="image" src="{{post.pictureUploadedURL}}">
     </div>
     </mat-card>
-    <div style="text-align: left" class="creator"><span>Upvotes: 0 <br>
-    Downvotes: 0 </span></div>
+    <div style="text-align: left" class="creator"><span>Upvotes: <b>{{post.upvotes}}</b>  <br>
+    Downvotes: <b>{{post.downvotes}}</b>  </span></div>
     <div *ngIf="loggedIn() === true">
       <button class="right-button" mat-flat-button color="primary" (click)="createAnswer()">Respond</button>
     </div>

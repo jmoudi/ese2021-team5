@@ -15,10 +15,11 @@ export class PostComponent implements OnInit {
   imageURL: any;
 
   @Input()
-  post: Post = new Post('','','',0, '', '', new File([], ''), 0);
+  post: Post = new Post('','','',0, '', '', new File([], ''), 0, 0, 0);
 
   @Output()
   delete = new EventEmitter<Post>();
+
   upvoted: boolean = false;
   downvoted: boolean = false;
 
@@ -52,12 +53,12 @@ export class PostComponent implements OnInit {
 
   upvote(): void{
     if(this.upvoted){
-      //send -1 upvote to backend
+      this.post.upvotes -= 1;
     } else{
-      //send +1 upvote to backend
+      this.post.upvotes += 1;
     }
     if(this.downvoted){
-      //send -1 downvote to backend
+      this.post.downvotes -= 1;
     }
     this.upvoted = !this.upvoted;
     this.downvoted = false;
@@ -65,12 +66,12 @@ export class PostComponent implements OnInit {
 
   downvote(): void{
     if(this.downvoted){
-      //send -1 downvote to backend
+      this.post.downvotes -= 1;
     } else{
-      //send +1 downvote to backend
+      this.post.downvotes += 1;
     }
     if(this.upvoted){
-      //send -1 upvote to backend
+      this.post.upvotes -= 1;
     }
     this.downvoted = !this.downvoted;
     this.upvoted = false;
