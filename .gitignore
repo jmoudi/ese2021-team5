@@ -1,0 +1,12 @@
+# Ignore IDE files
+/.idea
+
+**/.notes
+**/test
+.notes
+ese-project.code-workspace
+**/ese-project.code-workspace
+*.code-workspace
+**/*.code-workspace
+test
+
