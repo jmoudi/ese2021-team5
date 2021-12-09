@@ -1,0 +1,9 @@
+{
+    "watch":["src", "./test", "./"],
+    "ext":"ts, json",
+    "exec": "node",
+    "env":{
+        "PORT":3000,
+        "JWT_SECRET":"not_secure"
+    }
+}
